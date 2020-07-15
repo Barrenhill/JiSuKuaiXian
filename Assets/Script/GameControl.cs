@@ -5,6 +5,13 @@ using UnityEngine;
 
 public class GameControl : MonoBehaviour
 {
+    public GameControl Instance;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     /// <summary>
     /// 鼠标状态
     /// </summary>

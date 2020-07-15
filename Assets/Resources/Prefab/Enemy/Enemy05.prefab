@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 4415390307951271552}
   - component: {fileID: 5198657848161105230}
   - component: {fileID: 578268454193729799}
+  - component: {fileID: 6863070877503219090}
   m_Layer: 0
   m_Name: Enemy05
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47,7 +48,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 118
   m_CollisionDetection: 0
 --- !u!65 &578268454193729799
 BoxCollider:
@@ -62,6 +63,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.62229824, y: 0.5055603, z: 1.2228911}
   m_Center: {x: 0.013158441, y: 0.24721986, z: 0.0008599758}
+--- !u!114 &6863070877503219090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4875437534828837924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6d1c76738000704b9820ab725513909, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &9016913590167596482
 PrefabInstance:
   m_ObjectHideFlags: 0

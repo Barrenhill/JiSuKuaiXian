@@ -121,24 +121,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &391966680 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4875437534828837924, guid: 992be00ed01ff6948bf3cc30ac75449a,
-    type: 3}
-  m_PrefabInstance: {fileID: 1114272841}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &391966681
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 391966680}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6d1c76738000704b9820ab725513909, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -379,6 +361,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ff63d01a7a92594c8c7184b5633daca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Instance: {fileID: 0}
   MouseDownStatus: 0
 --- !u!4 &1019055644
 Transform:
@@ -401,10 +384,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 578268454193729799, guid: 992be00ed01ff6948bf3cc30ac75449a,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4415390307951271552, guid: 992be00ed01ff6948bf3cc30ac75449a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -1.07
       objectReference: {fileID: 0}
     - target: {fileID: 4415390307951271552, guid: 992be00ed01ff6948bf3cc30ac75449a,
         type: 3}
@@ -414,7 +402,7 @@ PrefabInstance:
     - target: {fileID: 4415390307951271552, guid: 992be00ed01ff6948bf3cc30ac75449a,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 9.17
       objectReference: {fileID: 0}
     - target: {fileID: 4415390307951271552, guid: 992be00ed01ff6948bf3cc30ac75449a,
         type: 3}
@@ -464,7 +452,7 @@ PrefabInstance:
     - target: {fileID: 4875437534828837924, guid: 992be00ed01ff6948bf3cc30ac75449a,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 992be00ed01ff6948bf3cc30ac75449a, type: 3}
@@ -720,7 +708,7 @@ PrefabInstance:
     - target: {fileID: -7395644097747034368, guid: 4c9859e0deb8f594c99d53e3135b8181,
         type: 3}
       propertyPath: m_Constraints
-      value: 92
+      value: 124
       objectReference: {fileID: 0}
     - target: {fileID: 268838948419332101, guid: 4c9859e0deb8f594c99d53e3135b8181,
         type: 3}
@@ -780,6 +768,11 @@ PrefabInstance:
     - target: {fileID: 6875732874933743048, guid: 4c9859e0deb8f594c99d53e3135b8181,
         type: 3}
       propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6875732874933743048, guid: 4c9859e0deb8f594c99d53e3135b8181,
+        type: 3}
+      propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 6875732874933743051, guid: 4c9859e0deb8f594c99d53e3135b8181,
@@ -846,7 +839,7 @@ PrefabInstance:
         type: 3}
       propertyPath: GameControl
       value: 
-      objectReference: {fileID: 1019055642}
+      objectReference: {fileID: 1019055643}
     - target: {fileID: 7914505806541765477, guid: 4c9859e0deb8f594c99d53e3135b8181,
         type: 3}
       propertyPath: PlayerArms.Array.data[0]
@@ -903,6 +896,11 @@ PrefabInstance:
       propertyPath: PlayerGunleve3
       value: 
       objectReference: {fileID: 2013719443}
+    - target: {fileID: 7914505806541765477, guid: 4c9859e0deb8f594c99d53e3135b8181,
+        type: 3}
+      propertyPath: _gameControl
+      value: 
+      objectReference: {fileID: 1019055643}
     - target: {fileID: 8198212002450216171, guid: 4c9859e0deb8f594c99d53e3135b8181,
         type: 3}
       propertyPath: m_Name

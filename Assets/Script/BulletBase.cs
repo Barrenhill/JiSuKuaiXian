@@ -5,9 +5,16 @@ using UnityEngine.Timeline;
 
 public class BulletBase : MoveObjBase
 {
-    public virtual void Attack()
+    /// <summary>
+    /// 伤害量
+    /// </summary>
+    public int HurtValue;
+    protected virtual void Attack(GameObject obj ,int hurt)
     {
-        
+        if (obj.tag.Equals(new Tag().Enemy))
+        {
+            obj.GetComponent<NpcCar>().BeAttack(hurt);
+        }
     }
 
     protected virtual void Move()

@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02fa834b1e01ecf41a72ad844fb4ffe8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsPlayer: 0
+  HurtValue: -5
 --- !u!1 &1461259834563998
 GameObject:
   m_ObjectHideFlags: 0
