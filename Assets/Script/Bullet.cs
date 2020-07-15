@@ -1,18 +1,21 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class Bullet : BulletBase
 {
-    // Start is called before the first frame update
-    void Start()
+    /// <summary>
+    /// 指示是否由玩家发射
+    /// </summary>
+    public bool IsPlayer;
+    private void Start()
     {
-        
+        moveSpeed = 10f;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        transform.position += transform.forward * Time.deltaTime * 10;
+        base.Move();
     }
 }
