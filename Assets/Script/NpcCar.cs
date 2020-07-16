@@ -18,25 +18,19 @@ public class NpcCar : CarBase
         base.Move();
     }
 
-    private void OnCollisionEnter(Collision other)
+    private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag.Equals(new Tag().Player))
+        if (other.gameObject.tag.Equals(Tag.Player))
         {
             Attack(other.gameObject);
         }
     }
-
-    protected override void Attack(GameObject obj)
+    public override void BeAttack(int value)
     {
-        base.Attack(obj);
-    }
-
-    public override bool? BeAttack(int value)
-    {
-        if (base.BeAttack(value)==true)
+        base.BeAttack(value);
+        if (IsDeath())
         {
             Destroy(gameObject);
         }
-        return null;
     }
 }

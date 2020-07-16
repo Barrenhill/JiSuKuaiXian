@@ -11,14 +11,9 @@ public class BulletBase : MoveObjBase
     public int HurtValue;
     protected virtual void Attack(GameObject obj ,int hurt)
     {
-        if (obj.tag.Equals(new Tag().Enemy))
+        if (obj.tag.Equals(Tag.Enemy))
         {
             obj.GetComponent<NpcCar>().BeAttack(hurt);
         }
-    }
-
-    protected virtual void Move()
-    {
-        base.Move();
     }
 }

@@ -59,6 +59,9 @@ public struct PlayerDate
     public int ArmsLeve;
 }
 
+/// <summary>
+/// 玩家武器等级
+/// </summary>
 public enum ArmsLeve
 {
     Gun1,

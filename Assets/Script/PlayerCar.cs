@@ -28,12 +28,14 @@ public class PlayerCar : CarBase
     public GameObject Bullet;
 
     public GameControl GameControl;
-    //[Range(0,2)]public int armsleve;
+    [Range(0,2)]public int armsleve;
     /// <summary>
     /// 玩家数据
     /// </summary>
-    private PlayerDate _date;
+    public PlayerDate Date;
 
+    
+    
     /// <summary>
     /// 动画播放器
     /// </summary>
@@ -48,12 +50,12 @@ public class PlayerCar : CarBase
     {
         health = maxHealth = 50;
         SetArms(ArmsLeve.Gun1);
-        _date.IntervalTime = 0.2f;
+        Date.IntervalTime = 0.1f;
     }
 
     private void FixedUpdate()
     {
-        /*if (_date.ArmsLeve != armsleve)
+        if (Date.ArmsLeve != armsleve)
         {
             switch (armsleve)
             {
@@ -67,55 +69,47 @@ public class PlayerCar : CarBase
                     SetArms(ArmsLeve.Gun3);
                     break;
             }
-        }*/
+        }
         PlayerMove();
         _timer -= Time.deltaTime;
         if (_timer <= 0)
         {
-            /*switch (_date.ArmsLeve)
+            switch (Date.ArmsLeve)
             {
                 case (int)ArmsLeve.Gun1:
-                    LaunchBullet(Bullet,LaunchPosition.position,Quaternion.identity);
+                    LaunchBullet(Bullet,Quaternion.identity, LaunchPosition.position,(int) ArmsLeve.Gun1 + 1,0.11f);
                     break;
                 case (int)ArmsLeve.Gun2:
-                    LaunchBullet(Bullet,new Vector3(LaunchPosition.position.x+0.055f,LaunchPosition.position.y,LaunchPosition.position.z), Quaternion.identity);
-                    LaunchBullet(Bullet,new Vector3(LaunchPosition.position.x-0.055f,LaunchPosition.position.y,LaunchPosition.position.z), Quaternion.identity);
+                    LaunchBullet(Bullet,Quaternion.identity, LaunchPosition.position,(int) ArmsLeve.Gun2 + 1,0.11f);
                     break;
                 case (int)ArmsLeve.Gun3:
-                    LaunchBullet(Bullet,LaunchPosition.position,Quaternion.identity);
-                    LaunchBullet(Bullet,new Vector3(LaunchPosition.position.x+0.11f,LaunchPosition.position.y,LaunchPosition.position.z), Quaternion.identity);
-                    LaunchBullet(Bullet,new Vector3(LaunchPosition.position.x-0.11f,LaunchPosition.position.y,LaunchPosition.position.z), Quaternion.identity);
-                    break;
-            }*/
-            switch (_date.ArmsLeve)
-            {
-                case (int)ArmsLeve.Gun1:
-                    
+                    LaunchBullet(Bullet,Quaternion.identity, LaunchPosition.position,(int) ArmsLeve.Gun3 + 1,0.11f);
                     break;
             }
-            _timer = _date.IntervalTime;
+            _timer = Date.IntervalTime;
         }
     }
-/// <summary>
-/// 玩家移动控制
-/// </summary>
+    
+    /// <summary>
+    /// 玩家移动控制
+    /// </summary>
     public void PlayerMove()
     {
         //获取鼠标按下时的位置并转为世界坐标
         if (Input.GetMouseButtonDown(0))
         {
             Vector2 MousePressPosition = new Vector2(Input.mousePosition.x, Input.mousePosition.y); //获取鼠标位置
-            _date.WorldPressPosition = Camera.main.ScreenToWorldPoint(MousePressPosition); //将鼠标位置转为世界坐标
-            _date.PlayerPosition = transform.position; //获取玩家位置
+            Date.WorldPressPosition = Camera.main.ScreenToWorldPoint(MousePressPosition); //将鼠标位置转为世界坐标
+            Date.PlayerPosition = transform.position; //获取玩家位置
         }
 
         //获取鼠标的实时位置并转为世界坐标
         if (GameControl.Instance.MouseDownStatus)
         {
-            _date.MousePosition = new Vector2(Input.mousePosition.x, Input.mousePosition.y); //获取鼠标在屏幕上的坐标
-            _date.WorldPosition = Camera.main.ScreenToWorldPoint(_date.MousePosition); //将屏幕坐标转换为世界坐标
+            Date.MousePosition = new Vector2(Input.mousePosition.x, Input.mousePosition.y); //获取鼠标在屏幕上的坐标
+            Date.WorldPosition = Camera.main.ScreenToWorldPoint(Date.MousePosition); //将屏幕坐标转换为世界坐标
             Vector3 Position;
-            Position.x = Mathf.Clamp(_date.PlayerPosition.x + (_date.WorldPosition.x - _date.WorldPressPosition.x), -2,
+            Position.x = Mathf.Clamp(Date.PlayerPosition.x + (Date.WorldPosition.x - Date.WorldPressPosition.x), -2,
                 2); //计算玩家目标点的X轴坐标
             Position.y = transform.position.y;
             Position.z = transform.position.z;
@@ -123,45 +117,27 @@ public class PlayerCar : CarBase
         }
     }
 
-private void OnCollisionEnter(Collision other)
+private void OnTriggerEnter(Collider other)
 {
-    if (other.gameObject.tag.Equals(new Tag().Enemy))
+    if (other.gameObject.tag.Equals(Tag.Enemy))
     {
         Attack(other.gameObject);
     }
 }
-
-protected override void Attack(GameObject obj)
-{
-    base.Attack(obj);
-}
-
 /// <summary>
 /// 收到攻击
 /// </summary>
 /// <param name="value"></param>
 /// <returns></returns>
-public override bool? BeAttack(int value)
+public override void BeAttack(int value)
 {
-    if (base.BeAttack(value)==true)
+    base.BeAttack(value);
+    if (IsDeath())
     {
         Destroy(gameObject);
     } 
-    Debug.Log(health);
-    return null;
 }
 
-/// <summary>
-/// 重写攻击方法
-/// </summary>
-/// <param name="obj">子弹预制</param>
-/// <param name="position">发射位置</param>
-/// <param name="quaternion">旋转角度</param>
-/// <param name="isPlayer">是否为玩家</param>
-    protected override void LaunchBullet(GameObject obj,Vector3 position,Quaternion quaternion)
-    {
-        base.LaunchBullet(obj, position, quaternion);
-    }
     /// <summary>
     /// 设置武器的等级
     /// </summary>
@@ -187,10 +163,10 @@ public override bool? BeAttack(int value)
                 PlayerGunLeve1.SetActive(false);
                 PlayerGunLeve2.SetActive(false);
                 PlayerGunleve3.SetActive(true);
-                _anim = PlayerGunleve3.transform.Find("Gun").GetComponent<Animator>();
+                _anim = PlayerGunleve3.GetComponentInChildren<Animator>();
                 break;
         }
             _anim.SetInteger("Gun", (int) leve);//播放对应枪械等级的动画
-            _date.ArmsLeve = (int) leve;
+            Date.ArmsLeve = (int) leve;
     }
 }

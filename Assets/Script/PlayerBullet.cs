@@ -12,12 +12,8 @@ public class PlayerBullet : BulletBase
         moveSpeed = 10f;
     }
 
-    protected override void Attack(GameObject obj,int value)
-    {
-        base.Attack(obj,value);
-    }
 
-    private void OnCollisionEnter(Collision other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other != null)
         {

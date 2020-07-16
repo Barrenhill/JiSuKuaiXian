@@ -10,6 +10,7 @@
         <e p="Script" t="Include">
           <e p="BulletBase.cs" t="Include" />
           <e p="CarBase.cs" t="Include" />
+          <e p="EnemyAttackCar.cs" t="Include" />
           <e p="GameControl.cs" t="Include" />
           <e p="MoveObjBase.cs" t="Include" />
           <e p="NpcCar.cs" t="Include" />
