@@ -28,7 +28,7 @@ public class GameControl : MonoBehaviour
         }
     }
 }
-public struct PlayerDate
+public struct CarDate
 {
 
     /// <summary>

@@ -32,7 +32,7 @@ public class PlayerCar : CarBase
     /// <summary>
     /// 玩家数据
     /// </summary>
-    public PlayerDate Date;
+    public CarDate Date;
 
     
     
@@ -44,7 +44,7 @@ public class PlayerCar : CarBase
     /// <summary>
     /// 发射子弹的CD计时器
     /// </summary>
-    private float _timer;
+    private float _cdTimer;
 
     private void Start()
     {
@@ -71,8 +71,8 @@ public class PlayerCar : CarBase
             }
         }
         PlayerMove();
-        _timer -= Time.deltaTime;
-        if (_timer <= 0)
+        _cdTimer -= Time.deltaTime;
+        if (_cdTimer <= 0)
         {
             switch (Date.ArmsLeve)
             {
@@ -86,7 +86,7 @@ public class PlayerCar : CarBase
                     LaunchBullet(Bullet,Quaternion.identity, LaunchPosition.position,(int) ArmsLeve.Gun3 + 1,0.11f);
                     break;
             }
-            _timer = Date.IntervalTime;
+            _cdTimer = Date.IntervalTime;
         }
     }
     

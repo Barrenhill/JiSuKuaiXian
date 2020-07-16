@@ -8,7 +8,7 @@ public class NpcCar : CarBase
     // Start is called before the first frame update
     void Start()
     {
-        moveSpeed = -2;
+        moveSpeed = -2.5f;
         health = maxHealth = 20;
     }
 
